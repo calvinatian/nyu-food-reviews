@@ -22,10 +22,15 @@ dining_halls.add("Upstein Daily Press");
 dining_halls.add("Upstein The Egg Shoppe");
 
 window.onload = function (event) {
+  // create dining halls
   for (let location of dining_halls) {
-    var node = document.createElement("li");
-    var textnode = document.createTextNode(location);
-    node.appendChild(textnode);
-    document.getElementById("dining_halls").appendChild(node);
+    document.getElementById("diningHalls").innerHTML +=
+      `<div class="list-group-item">${location}</div>`;
   }
-};
+
+  // Simple list
+  Sortable.create(diningHalls, {
+    /* options */
+    animation: 150,
+  });
+}
