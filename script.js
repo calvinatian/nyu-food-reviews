@@ -1,36 +1,39 @@
-let dining_halls = new Set();
+let dining_halls_all = new Set();
 
-dining_halls.add("Bridgeview Market");
-dining_halls.add("Café 370");
-dining_halls.add("Market at Third North");
-dining_halls.add("Market at Palladium");
-dining_halls.add("The Marketplace at Kimmel");
-dining_halls.add("BRKFST & CO at UHALL");
-dining_halls.add("18 Below");
-dining_halls.add("Dunkin'");
-dining_halls.add("Jasper Kane Cafe");
-dining_halls.add("Kosher Eatery");
-dining_halls.add("Market at Lipton");
-dining_halls.add("Market at Sidestein");
-dining_halls.add("Market at UHall");
-dining_halls.add("NYU EATS at Downstein");
-dining_halls.add("NYU EATS at Lipton");
-dining_halls.add("Palladium");
-dining_halls.add("Peet's Coffee");
-dining_halls.add("Starbucks");
-dining_halls.add("Upstein Daily Press");
-dining_halls.add("Upstein The Egg Shoppe");
+dining_halls_all.add("Bridgeview Market");
+dining_halls_all.add("Café 370");
+dining_halls_all.add("Market at Third North");
+dining_halls_all.add("Market at Palladium");
+dining_halls_all.add("The Marketplace at Kimmel");
+dining_halls_all.add("BRKFST & CO at UHALL");
+dining_halls_all.add("18 Below");
+dining_halls_all.add("Dunkin'");
+dining_halls_all.add("Jasper Kane Cafe");
+dining_halls_all.add("Kosher Eatery");
+dining_halls_all.add("Market at Lipton");
+dining_halls_all.add("Market at Sidestein");
+dining_halls_all.add("Market at UHall");
+dining_halls_all.add("NYU EATS at Downstein");
+dining_halls_all.add("NYU EATS at Lipton");
+dining_halls_all.add("Palladium");
+dining_halls_all.add("Peet's Coffee");
+dining_halls_all.add("Starbucks");
+dining_halls_all.add("Upstein Daily Press");
+dining_halls_all.add("Upstein The Egg Shoppe");
 
 window.onload = function (event) {
-  // create dining halls
-  for (let location of dining_halls) {
-    document.getElementById("diningHalls").innerHTML +=
-      `<div class="list-group-item">${location}</div>`;
+  // Create dining halls items
+  for (let location of dining_halls_all) {
+    document.getElementById("tier0").innerHTML +=
+      `<div class="dining-hall-block">${location}</div>`;
   }
 
-  // Simple list
-  Sortable.create(diningHalls, {
-    /* options */
-    animation: 150,
-  });
+  // Create list tiers
+  for (let i = 0; i < 7; i = i + 1) {
+    Sortable.create(eval(`tier${i}`), {
+      animation: 150,
+      group: 'dining-halls',
+      ghostClass: 'blue-background-class',
+    });
+  }
 }
